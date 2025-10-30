@@ -14,6 +14,8 @@ import base64
 import re
 from rich import print, pretty
 
+# project by peyush, purna, meghanath
+
 pretty.install()
 
 # --- Core Dependencies ---
