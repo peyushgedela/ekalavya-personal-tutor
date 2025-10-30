@@ -1,0 +1,30 @@
+[
+  {
+    "question": "If two parallel lines are intersected by a transversal, what is the relationship between corresponding angles?",
+    "options": [
+      "They are supplementary (add up to 180°)",
+      "They are equal",
+      "They are complementary (add up to 90°)",
+      "There is no relationship"
+    ],
+    "answer": "They are equal",
+    "topic": "Corresponding Angles"
+  },
+  {
+    "question": "In the 'Z' shape formed by a transversal cutting parallel lines, the angles inside the 'corners' of the Z are called...",
+    "options": [
+      "Vertically opposite angles",
+      "Corresponding angles",
+      "Alternate interior angles",
+      "Co-interior angles"
+    ],
+    "answer": "Alternate interior angles",
+    "topic": "Alternate Interior Angles"
+  },
+  {
+    "question": "If one angle in a linear pair is 70°, what is the measure of the other angle?",
+    "options": ["70°", "20°", "110°", "It cannot be determined"],
+    "answer": "110°",
+    "topic": "Linear Pairs"
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "step": 1,
+    "type": "instruction",
+    "question_text": "Example: Let's look at this diagram. Lines 'l' and 'm' are parallel, and they are cut by a transversal line 't'. The angle marked is 55°.",
+    "svg_file": "example_angles_1.svg",
+    "feedback_text": "First, let's identify the key parts: two parallel lines and a line that crosses them. We will use this setup to understand different angle relationships.",
+    "solution_keywords": []
+  },
+  {
+    "step": 2,
+    "type": "instruction",
+    "question_text": "Example: The angle in the same position at the bottom intersection is called the 'corresponding angle'. Since the lines are parallel, corresponding angles are equal. So, it is also 55°.",
+    "svg_file": "example_angles_2.svg",
+    "feedback_text": "Corresponding angles are like shadows of each other at each intersection. Remember, for parallel lines, they are always equal.",
+    "solution_keywords": []
+  },
+  {
+    "step": 3,
+    "type": "instruction",
+    "question_text": "Example: The angle on the opposite side and inside the parallel lines is the 'alternate interior angle'. It is also equal, so it's 55°.",
+    "svg_file": "example_angles_3.svg",
+    "feedback_text": "Alternate interior angles form a 'Z' shape. This is a great trick to remember that they are equal.",
+    "solution_keywords": []
+  },
+  {
+    "step": 4,
+    "type": "validation",
+    "question_text": "Practice: In this new diagram, the top-left angle is 120°. Find the value of the corresponding angle 'x' and write down the rule.",
+    "svg_file": "practice_angles_1.svg",
+    "feedback_text": "Remember what we learned about corresponding angles. They are in the same position at each intersection.",
+    "solution_keywords": ["corresponding", "equal", "120"],
+    "pedagogical_goal": "The student must identify the concept of 'corresponding angles' and state that they are equal, leading to the answer 120°."
+  },
+  {
+    "step": 5,
+    "type": "validation",
+    "question_text": "Practice: Now, find the value of the alternate interior angle 'y' and write down the rule you used.",
+    "svg_file": "practice_angles_2.svg",
+    "feedback_text": "Look for the 'Z' shape to find the alternate interior angle. What is its relationship to the original 120° angle?",
+    "solution_keywords": ["alternate interior", "equal", "120"],
+    "pedagogical_goal": "The student must identify 'alternate interior angles' and state that they are equal to find the value of y."
+  },
+  {
+    "step": 6,
+    "type": "validation",
+    "question_text": "Practice: Finally, find the value of the co-interior angle 'z'. This one is different! Write down the rule and the value.",
+    "svg_file": "practice_angles_3.svg",
+    "feedback_text": "Co-interior angles are inside the parallel lines and on the same side. They are not equal. What do they add up to?",
+    "solution_keywords": ["co-interior", "supplementary", "180", "60"],
+    "pedagogical_goal": "The student must identify 'co-interior angles', state they are supplementary (add up to 180°), and calculate the result."
+  }
+]
