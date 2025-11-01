@@ -1,30 +1,58 @@
 [
   {
-    "question": "If two parallel lines are intersected by a transversal, what is the relationship between corresponding angles?",
-    "options": [
-      "They are supplementary (add up to 180°)",
-      "They are equal",
-      "They are complementary (add up to 90°)",
-      "There is no relationship"
-    ],
-    "answer": "They are equal",
-    "topic": "Corresponding Angles"
+    "question_number": 1,
+    "difficulty": "easy",
+    "cognitive_level": "Remember/Understand",
+    "question": "In the diagram below, lines AB and CD are parallel, and line EF is a transversal. If ∠1 = 120°, what is the measure of ∠5 (the corresponding angle)?",
+    "svg_file": "diagnostic_q1_corresponding.svg",
+    "options": ["60°", "120°", "180°", "Cannot be determined"],
+    "answer": "120°",
+    "topic": "Corresponding Angles",
+    "misconception_map": {
+      "60°": "Student thinks corresponding angles are supplementary (adds to 180°) instead of equal - confusing with co-interior angles",
+      "120°": "Correct - Student understands that corresponding angles are equal when lines are parallel",
+      "180°": "Student thinks angles on a straight line or complete rotation - fundamental angle concept confusion",
+      "Cannot be determined": "Student doesn't know the relationship between corresponding angles in parallel lines"
+    },
+    "pedagogical_purpose": "Assess basic recognition of corresponding angles and their equal relationship. This is foundational knowledge required for both remedial and advanced paths."
   },
   {
-    "question": "In the 'Z' shape formed by a transversal cutting parallel lines, the angles inside the 'corners' of the Z are called...",
-    "options": [
-      "Vertically opposite angles",
-      "Corresponding angles",
-      "Alternate interior angles",
-      "Co-interior angles"
-    ],
-    "answer": "Alternate interior angles",
-    "topic": "Alternate Interior Angles"
+    "question_number": 2,
+    "difficulty": "moderate",
+    "cognitive_level": "Apply/Analyze",
+    "question": "Parallel lines l and m are cut by transversal t. One of the co-interior angles measures 65°. What is the measure of its co-interior angle pair?",
+    "svg_file": "diagnostic_q2_cointerior.svg",
+    "options": ["65°", "115°", "125°", "25°"],
+    "answer": "115°",
+    "topic": "Co-interior Angles",
+    "misconception_map": {
+      "65°": "Student thinks co-interior angles are equal (confusing with alternate interior or corresponding angles) - lacks understanding of supplementary relationship",
+      "115°": "Correct - Student correctly applies the co-interior angle property (180° - 65° = 115°) showing understanding of supplementary angles",
+      "125°": "Student made an arithmetic error (possibly 180° - 55° instead of 180° - 65°) - careless calculation rather than conceptual issue",
+      "25°": "Student subtracted incorrectly or thinks angles are complementary (90° - 65° = 25°) - confusion between supplementary and complementary"
+    },
+    "pedagogical_purpose": "Test understanding of co-interior angles as supplementary (not equal) and ability to perform basic angle calculations. This distinguishes students who memorize patterns vs. those who understand relationships."
   },
   {
-    "question": "If one angle in a linear pair is 70°, what is the measure of the other angle?",
-    "options": ["70°", "20°", "110°", "It cannot be determined"],
-    "answer": "110°",
-    "topic": "Linear Pairs"
+    "question_number": 3,
+    "difficulty": "difficult",
+    "cognitive_level": "Analyze/Evaluate",
+    "question": "Two lines are cut by a transversal. At the intersections, one pair of alternate interior angles measures (3x + 20)° and (5x - 40)°. Another student claims the lines are parallel. Which statement is correct?",
+    "svg_file": "diagnostic_q3_reasoning.svg",
+    "options": [
+      "The lines are parallel because alternate interior angles are always equal",
+      "The lines are NOT parallel because when solved, 3x + 20 ≠ 5x - 40 for any value of x",
+      "The lines are parallel only if x = 30°, making both angles equal to 110°",
+      "More information is needed to determine if the lines are parallel"
+    ],
+    "answer": "The lines are parallel only if x = 30°, making both angles equal to 110°",
+    "topic": "Converse of Alternate Interior Angles Theorem with Algebra",
+    "misconception_map": {
+      "The lines are parallel because alternate interior angles are always equal": "Student reverses causation - doesn't understand that parallel lines CAUSE equal alternate interior angles, not the other way around (confusing theorem with its converse)",
+      "The lines are NOT parallel because when solved, 3x + 20 ≠ 5x - 40 for any value of x": "Student correctly attempts to solve but makes algebraic error or logic error - actually 3x + 20 = 5x - 40 gives x = 30, which is solvable",
+      "The lines are parallel only if x = 30°, making both angles equal to 110°": "Correct - Student understands converse theorem (if alternate interior angles are equal, then lines are parallel), sets up equation 3x + 20 = 5x - 40, solves for x = 30, and verifies both angles = 110°. Shows advanced algebraic reasoning and geometric understanding",
+      "More information is needed to determine if the lines are parallel": "Student doesn't understand the converse of alternate interior angle theorem or lacks confidence in applying algebraic reasoning to geometry"
+    },
+    "pedagogical_purpose": "Assess ability to apply converse theorems, integrate algebra with geometry, and evaluate logical conditions for parallelism. This question clearly separates students ready for advanced problem-solving from those needing foundational reinforcement."
   }
 ]

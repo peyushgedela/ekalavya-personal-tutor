@@ -2,52 +2,85 @@
   {
     "step": 1,
     "type": "instruction",
-    "question_text": "Example: Let's look at this diagram. Lines 'l' and 'm' are parallel, and they are cut by a transversal line 't'. The angle marked is 55°.",
-    "svg_file": "example_angles_1.svg",
-    "feedback_text": "First, let's identify the key parts: two parallel lines and a line that crosses them. We will use this setup to understand different angle relationships.",
-    "solution_keywords": []
+    "question_text": "Let's start simple: Look at this diagram. We have two parallel lines 'l' and 'm' (shown with arrow marks >>). A third line 't' crosses both of them. This crossing line is called a 'transversal'.",
+    "svg_file": "parallel_transversal_intro.svg",
+    "feedback_text": "The key word here is 'parallel' - lines that never meet, no matter how far you extend them. The transversal is like a bridge connecting the two parallel lines. Notice how 8 angles are formed - 4 at the top intersection and 4 at the bottom.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Introduce basic vocabulary (parallel, transversal) with visual identification. Students learn to recognize the setup before understanding angle relationships."
   },
   {
     "step": 2,
     "type": "instruction",
-    "question_text": "Example: The angle in the same position at the bottom intersection is called the 'corresponding angle'. Since the lines are parallel, corresponding angles are equal. So, it is also 55°.",
-    "svg_file": "example_angles_2.svg",
-    "feedback_text": "Corresponding angles are like shadows of each other at each intersection. Remember, for parallel lines, they are always equal.",
-    "solution_keywords": []
+    "question_text": "Example: Look at angle 1 at the top intersection and angle 5 at the bottom intersection. They are in the same position (top-right corner) at each intersection. These are called 'Corresponding Angles', and they are always equal when lines are parallel. If ∠1 = 110°, then ∠5 = 110°.",
+    "svg_file": "corresponding_angles_example.svg",
+    "feedback_text": "Think of corresponding angles as 'matching positions' or 'F pattern' angles. An easy way to remember: they look like the letter 'F' when you trace them. For parallel lines, corresponding angles are ALWAYS equal.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Build understanding of corresponding angles using visual patterns (F-shape) and concrete numerical examples."
   },
   {
     "step": 3,
     "type": "instruction",
-    "question_text": "Example: The angle on the opposite side and inside the parallel lines is the 'alternate interior angle'. It is also equal, so it's 55°.",
-    "svg_file": "example_angles_3.svg",
-    "feedback_text": "Alternate interior angles form a 'Z' shape. This is a great trick to remember that they are equal.",
-    "solution_keywords": []
+    "question_text": "Example: Now look at angle 3 at the top and angle 5 at the bottom. They are on opposite sides of the transversal and between the parallel lines. These are called 'Alternate Interior Angles', and they are equal. If ∠3 = 70°, then ∠5 = 70°.",
+    "svg_file": "alternate_interior_example.svg",
+    "feedback_text": "Alternate interior angles make a 'Z pattern' (or reverse Z). The word 'alternate' means they switch sides of the transversal. 'Interior' means they are between (inside) the two parallel lines. Remember: Z-pattern = alternate angles are equal.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Introduce alternate interior angles with Z-pattern visual memory aid to help students identify and remember the relationship."
   },
   {
     "step": 4,
-    "type": "validation",
-    "question_text": "Practice: In this new diagram, the top-left angle is 120°. Find the value of the corresponding angle 'x' and write down the rule.",
-    "svg_file": "practice_angles_1.svg",
-    "feedback_text": "Remember what we learned about corresponding angles. They are in the same position at each intersection.",
-    "solution_keywords": ["corresponding", "equal", "120"],
-    "pedagogical_goal": "The student must identify the concept of 'corresponding angles' and state that they are equal, leading to the answer 120°."
+    "type": "instruction",
+    "question_text": "Example: Look at angle 3 and angle 6. They are on the same side of the transversal and between the parallel lines. These are called 'Co-interior Angles' (also called consecutive interior angles or allied angles), and they ALWAYS add up to 180°. If ∠3 = 70°, then ∠6 = 110°.",
+    "svg_file": "cointerior_angles_example.svg",
+    "feedback_text": "Co-interior angles make a 'C pattern' or 'U pattern'. Unlike corresponding and alternate angles, these are NOT equal - they are supplementary (add to 180°). Think: C for Co-interior, and they Complete a straight angle.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Introduce co-interior angles with C-pattern, emphasizing the difference (supplementary, not equal) to avoid confusion."
   },
   {
     "step": 5,
     "type": "validation",
-    "question_text": "Practice: Now, find the value of the alternate interior angle 'y' and write down the rule you used.",
-    "svg_file": "practice_angles_2.svg",
-    "feedback_text": "Look for the 'Z' shape to find the alternate interior angle. What is its relationship to the original 120° angle?",
-    "solution_keywords": ["alternate interior", "equal", "120"],
-    "pedagogical_goal": "The student must identify 'alternate interior angles' and state that they are equal to find the value of y."
+    "question_text": "Practice: In this diagram, lines AB and CD are parallel, cut by transversal EF. If ∠1 = 115°, find the corresponding angle ∠5. What pattern did you use to identify them?",
+    "svg_file": "practice_corresponding_1.svg",
+    "feedback_text": "Look for angles in the same position at each intersection. Remember the 'F pattern' for corresponding angles. Are these angles equal or supplementary?",
+    "solution_keywords": ["corresponding", "equal", "115", "F pattern"],
+    "pedagogical_goal": "Apply corresponding angles concept. Students identify the F-pattern and state that ∠5 = 115° because corresponding angles are equal."
   },
   {
     "step": 6,
     "type": "validation",
-    "question_text": "Practice: Finally, find the value of the co-interior angle 'z'. This one is different! Write down the rule and the value.",
-    "svg_file": "practice_angles_3.svg",
-    "feedback_text": "Co-interior angles are inside the parallel lines and on the same side. They are not equal. What do they add up to?",
-    "solution_keywords": ["co-interior", "supplementary", "180", "60"],
-    "pedagogical_goal": "The student must identify 'co-interior angles', state they are supplementary (add up to 180°), and calculate the result."
+    "question_text": "Practice: In the same diagram, ∠3 = 65°. Find ∠5 using the alternate interior angles property. Which pattern helps you identify alternate interior angles?",
+    "svg_file": "practice_alternate_interior_1.svg",
+    "feedback_text": "Alternate interior angles are on opposite sides of the transversal and between the parallel lines. Look for the 'Z pattern'. What is the relationship between alternate interior angles?",
+    "solution_keywords": ["alternate interior", "Z pattern", "equal", "65"],
+    "pedagogical_goal": "Apply alternate interior angles concept. Students identify the Z-pattern and conclude ∠5 = 65° because alternate interior angles are equal."
+  },
+  {
+    "step": 7,
+    "type": "validation",
+    "question_text": "Practice: Lines PQ and RS are parallel, cut by transversal TU. If ∠4 = 125°, find the co-interior angle ∠6. Show your calculation.",
+    "svg_file": "practice_cointerior_1.svg",
+    "feedback_text": "Co-interior angles are on the same side of the transversal and between parallel lines. They form a 'C pattern'. Remember, these angles add up to 180°, not equal to each other.",
+    "solution_keywords": [
+      "co-interior",
+      "supplementary",
+      "180 - 125",
+      "55",
+      "C pattern"
+    ],
+    "pedagogical_goal": "Apply co-interior angles concept with calculation. Students must recognize the relationship and calculate: ∠6 = 180° - 125° = 55°."
+  },
+  {
+    "step": 8,
+    "type": "validation",
+    "question_text": "Mixed Practice: Lines l and m are parallel, cut by transversal t. If ∠2 = 3x and its corresponding angle = (2x + 40)°, find the value of x and the measure of both angles.",
+    "svg_file": "practice_mixed_algebraic_1.svg",
+    "feedback_text": "First identify the angle relationship. Since they are corresponding angles and the lines are parallel, what must be true? Set up an equation and solve for x.",
+    "solution_keywords": [
+      "corresponding",
+      "equal",
+      "3x = 2x + 40",
+      "x = 40",
+      "120"
+    ],
+    "pedagogical_goal": "Integrate basic algebra with geometric reasoning. Students must recognize corresponding angles are equal, form equation 3x = 2x + 40, solve for x = 40, then calculate angle = 120°."
   }
 ]

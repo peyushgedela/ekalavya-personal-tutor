@@ -1,0 +1,113 @@
+[
+  {
+    "step": 1,
+    "type": "instruction",
+    "question_text": "Axiom and Theorem: When a transversal intersects two parallel lines, it creates three fundamental angle relationships: (1) Corresponding angles are equal, (2) Alternate interior angles are equal, and (3) Co-interior angles are supplementary (sum to 180°). These relationships form the foundation for proving parallelism and solving complex geometry problems.",
+    "svg_file": "parallel_axiom_complete.svg",
+    "feedback_text": "These are NOT three separate facts - they are interconnected. If you can prove any ONE of these relationships holds true for a pair of lines, you can deduce the other two relationships. Understanding this interconnection is key to advanced problem-solving.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Present the three angle relationships as an interconnected system, establishing the foundation for proof-based reasoning."
+  },
+  {
+    "step": 2,
+    "type": "instruction",
+    "question_text": "Logical Proof: Why are corresponding angles equal when lines are parallel? This is based on Euclid's Fifth Postulate (Parallel Postulate). Using this axiom and properties of linear pairs, we can prove that if corresponding angles are equal, then alternate interior angles must also be equal, and co-interior angles must be supplementary.",
+    "svg_file": "proof_angle_relationships.svg",
+    "feedback_text": "Here's the logic chain: If ∠1 = ∠5 (corresponding), and ∠1 + ∠3 = 180° (linear pair), and ∠5 + ∠6 = 180° (linear pair), then we can deduce ∠3 = ∠6. This is the foundation of deductive geometry - one proof leads to multiple conclusions.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Develop analytical thinking through proof structure, showing how one relationship logically leads to others using linear pair properties."
+  },
+  {
+    "step": 3,
+    "type": "instruction",
+    "question_text": "Converse Theorems: The converse is also true - if any of these angle relationships hold, then the lines MUST be parallel. This is crucial for verifying parallelism: If corresponding angles are equal, OR alternate interior angles are equal, OR co-interior angles sum to 180°, then the lines are parallel.",
+    "svg_file": "converse_theorem_parallel.svg",
+    "feedback_text": "This converse property is powerful in proofs. When you need to prove two lines are parallel, you only need to show ONE of these three conditions. In construction problems and geometric proofs, this becomes your primary tool.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Introduce converse theorems to enable students to prove parallelism, moving from recognition to construction and verification."
+  },
+  {
+    "step": 4,
+    "type": "validation",
+    "question_text": "Application with Proof: Lines l and m are cut by transversal t. If ∠3 = (4x - 20)° and its corresponding angle ∠7 = (3x + 15)°, find x. Then verify whether lines l and m are parallel by checking if the calculated angles are equal.",
+    "svg_file": "practice_verify_parallel_1.svg",
+    "feedback_text": "Since these are corresponding angles, set them equal and solve for x. After finding x, substitute back to calculate both angles. If they're equal, the lines are parallel; if not, they're not parallel.",
+    "solution_keywords": [
+      "4x - 20 = 3x + 15",
+      "x = 35",
+      "∠3 = 120°",
+      "∠7 = 120°",
+      "parallel",
+      "equal"
+    ],
+    "pedagogical_goal": "Apply algebraic reasoning with geometric verification. Students solve 4x - 20 = 3x + 15 to get x = 35, calculate both angles = 120°, and conclude lines are parallel."
+  },
+  {
+    "step": 5,
+    "type": "validation",
+    "question_text": "Multi-step Analysis: Parallel lines AB and CD are cut by transversal PQ. If ∠APQ = (5y - 30)° and the co-interior angle ∠PQD = (3y + 10)°, find y and both angle measures. Verify your answer using the co-interior angle property.",
+    "svg_file": "practice_cointerior_advanced_1.svg",
+    "feedback_text": "Co-interior angles are supplementary, so their sum equals 180°. Set up the equation: (5y - 30) + (3y + 10) = 180. Solve for y, then calculate each angle and verify their sum.",
+    "solution_keywords": [
+      "co-interior",
+      "supplementary",
+      "(5y-30) + (3y+10) = 180",
+      "8y - 20 = 180",
+      "y = 25",
+      "95°",
+      "85°",
+      "verify sum"
+    ],
+    "pedagogical_goal": "Analyze multi-step algebraic problem. Students must form equation (5y-30) + (3y+10) = 180, simplify to 8y = 200, solve y = 25, then verify: 95° + 85° = 180°."
+  },
+  {
+    "step": 6,
+    "type": "validation",
+    "question_text": "Complex Problem: Two lines are cut by a transversal. The alternate interior angles are (2a + 3b)° and (a + 2b + 15)°. Another pair of co-interior angles at the same intersections are (4a - b)° and (5a + 2b - 30)°. Find the values of a and b, and determine if the lines are parallel.",
+    "svg_file": "practice_two_variable_system.svg",
+    "feedback_text": "You have two conditions: (1) Alternate interior angles are equal, (2) Co-interior angles sum to 180°. This gives you a system of two equations with two unknowns. Solve the system simultaneously.",
+    "solution_keywords": [
+      "system of equations",
+      "2a + 3b = a + 2b + 15",
+      "a + b = 15",
+      "(4a-b) + (5a+2b-30) = 180",
+      "9a + b = 210",
+      "a = 24.375",
+      "b = -9.375",
+      "check validity"
+    ],
+    "pedagogical_goal": "Create and solve a system of equations from geometric conditions. Students must form: (1) 2a + 3b = a + 2b + 15 → a + b = 15, (2) (4a-b) + (5a+2b-30) = 180 → 9a + b = 210. Solving: a = 24.375, b = -9.375. Then evaluate if negative angle makes geometric sense."
+  },
+  {
+    "step": 7,
+    "type": "validation",
+    "question_text": "Proof Construction: Given that AB || CD and EF || GH. A transversal intersects all four lines. If ∠1 (formed by AB and transversal) = 65°, use the properties of parallel lines to find ∠8 (formed by GH and transversal). Construct a step-by-step logical proof showing each angle relationship you use.",
+    "svg_file": "practice_multi_parallel_proof.svg",
+    "feedback_text": "Break this down into steps. Use corresponding angles for AB || CD to find an intermediate angle, then use that relationship again for EF || GH. Each step should cite which angle property you're using.",
+    "solution_keywords": [
+      "corresponding angles",
+      "AB || CD",
+      "EF || GH",
+      "step-by-step proof",
+      "transitive property",
+      "65°"
+    ],
+    "pedagogical_goal": "Create a multi-step deductive proof. Students must construct logical chain: ∠1 = ∠2 (corresponding, AB || CD) = 65°, then ∠2 = ∠3 (corresponding, EF || GH) = 65°, therefore ∠8 = 65° by transitive property."
+  },
+  {
+    "step": 8,
+    "type": "validation",
+    "question_text": "Critical Evaluation: A student claims: 'Lines l and m are cut by transversal t. I found that ∠2 = 75° and ∠6 = 105°. These are alternate interior angles, so they should be equal. Therefore, lines l and m are NOT parallel.' Evaluate this reasoning. Is the conclusion correct? If the reasoning is flawed, identify the error and provide the correct analysis.",
+    "svg_file": "practice_evaluate_reasoning.svg",
+    "feedback_text": "First, verify if ∠2 and ∠6 are actually alternate interior angles based on their positions. Then check the converse theorem: what must be true about alternate interior angles if lines ARE parallel? What can you conclude if they're NOT equal?",
+    "solution_keywords": [
+      "reasoning correct",
+      "alternate interior not equal",
+      "converse theorem",
+      "lines not parallel",
+      "75° ≠ 105°",
+      "valid conclusion"
+    ],
+    "pedagogical_goal": "Evaluate logical reasoning using converse theorems (Bloom's Evaluate level). Students must verify: (1) ∠2 and ∠6 are alternate interior angles, (2) They're not equal (75° ≠ 105°), (3) By converse theorem, if alternate interior angles are unequal, lines are not parallel, (4) Student's conclusion is correct."
+  }
+]
