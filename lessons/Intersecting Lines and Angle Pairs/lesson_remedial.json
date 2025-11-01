@@ -1,0 +1,56 @@
+[
+  {
+    "step": 1,
+    "type": "instruction",
+    "question_text": "Let's go beyond just *using* the rules. First, understand the **Converse**. \n**Axiom 6.1 (Linear Pair Axiom):** If a ray stands on a line, THEN the sum of adjacent angles is 180°.\n**Axiom 6.2 (Converse):** If the sum of two adjacent angles is 180°, THEN their non-common arms form a line.\n\nWe use Axiom 6.2 to *prove* that points A, O, and B in Fig 6.7 (iii) are on a straight line, because 125° + 55° = 180°.",
+    "svg_file": "Fig_6.7_iii.svg",
+    "feedback_text": "This is a key logical step. Axiom 6.1 assumes you have a line. Axiom 6.2 *proves* you have a line. This is crucial for proofs, like in Exercise 6.1, Problem 4.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Introduce the concept of a 'converse' and its utility in proofs, using Axiom 6.1 and 6.2 as the primary example."
+  },
+  {
+    "step": 2,
+    "type": "instruction",
+    "question_text": "Let's **prove** Theorem 6.1 (Vertically opposite angles are equal). \n\n**Given:** Lines AB and CD intersect at O. \n**Proof:**\n1. Ray OA stands on line CD. Therefore, ∠AOC + ∠AOD = 180° (Linear Pair Axiom).\n2. Ray OD stands on line AB. Therefore, ∠AOD + ∠BOD = 180° (Linear Pair Axiom).\n3. From (1) and (2): ∠AOC + ∠AOD = ∠AOD + ∠BOD.\n4. Subtract ∠AOD from both sides: ∠AOC = ∠BOD. Similarly, we can prove ∠AOD = ∠BOC.",
+    "svg_file": "Fig_6.8_vertically_opposite.svg",
+    "feedback_text": "Notice how we *used* the Linear Pair Axiom to *prove* the Vertically Opposite Angles Theorem. This is how geometric proofs are built: using axioms to prove theorems.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Guide the student through the formal proof of Theorem 6.1 as presented in the textbook."
+  },
+  {
+    "step": 3,
+    "type": "validation",
+    "question_text": "Let's solve **Exercise 6.1, Problem 1** (Fig. 6.13). \n\nGiven: ∠AOC + ∠BOE = 70° and ∠BOD = 40°. \n**Part 1: Find ∠AOC.**",
+    "svg_file": "Fig_6.13.svg",
+    "feedback_text": "Look at the diagram. What is the relationship between ∠AOC and ∠BOD? Use Theorem 6.1.",
+    "solution_keywords": ["40", "40 degrees", "AOC = BOD", "vertically opposite", "Theorem 6.1"],
+    "pedagogical_goal": "Begin a multi-step problem by applying Theorem 6.1."
+  },
+  {
+    "step": 4,
+    "type": "validation",
+    "question_text": "Problem 1, Part 2 (Fig. 6.13): \nWe know ∠AOC = 40°. The problem gives us ∠AOC + ∠BOE = 70°. \n**Part 2: Find ∠BOE.**",
+    "svg_file": "Fig_6.13.svg",
+    "feedback_text": "You have an equation. Substitute the value of ∠AOC you just found (40°) into the equation and solve for ∠BOE.",
+    "solution_keywords": ["30", "30 degrees", "40 + BOE = 70", "70 - 40 = 30"],
+    "pedagogical_goal": "Use algebra to solve for an unknown angle given a sum."
+  },
+  {
+    "step": 5,
+    "type": "validation",
+    "question_text": "Problem 1, Part 3 (Fig. 6.13): \nWe know ∠AOC = 40° and ∠BOE = 30°. \n**Part 3: Find reflex ∠COE.**",
+    "svg_file": "Fig_6.13.svg",
+    "feedback_text": "First, find the regular ∠COE. Notice that ∠AOC, ∠COE, and ∠BOE are all adjacent angles on the *straight line* AB. What must they add up to? Once you find ∠COE, calculate its reflex angle (360° - ∠COE).",
+    "solution_keywords": ["250", "250 degrees", "AOC + COE + BOE = 180", "40 + COE + 30 = 180", "COE = 110", "Reflex = 360 - 110 = 250"],
+    "pedagogical_goal": "Combine the concept of a linear pair (angles on a straight line) with the definition of a reflex angle."
+  },
+  {
+    "step": 6,
+    "type": "validation",
+    "question_text": "Let's solve **Exercise 6.1, Problem 2** (Fig. 6.14). \n\nGiven: Lines XY and MN intersect at O. ∠POY = 90° and a:b = 2:3. \n**Find c.**",
+    "svg_file": "Fig_6.14.svg",
+    "feedback_text": "First, find a+b. Notice ∠POX and ∠POY form a linear pair on line XY. So, a+b+90° = 180°, which means a+b = 90°. \nNow, use the ratio a:b = 2:3 to find the value of b. \nFinally, look at b and c. They form a linear pair on line MN. How can you find c?",
+    "solution_keywords": ["126", "126 degrees", "a+b=90", "b = (3/5) * 90", "b = 54", "b+c = 180", "c = 180 - 54 = 126"],
+    "pedagogical_goal": "Solve a complex multi-step problem involving linear pairs and ratios."
+  }
+]
