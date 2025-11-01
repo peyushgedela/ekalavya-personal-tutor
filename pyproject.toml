@@ -17,6 +17,4 @@ dependencies = [
     "python-dotenv>=1.1.1",
     "rich>=14.1.0",
     "scikit-learn>=1.7.2",
-    "tensorflow>=2.18.1",
-    "tensorflow-io-gcs-filesystem==0.31.0",
 ]

@@ -54,6 +54,7 @@ class TutorOrchestrator:
         self.ui.practice_widget.student_condition_updated.connect(self.on_student_condition_update)
 
     def on_student_condition_update(self, condition: str):
+        """Receives the new, richer condition string and updates the state."""
         if self.student_condition != condition:
             self.student_condition = condition
             print(f"Student condition updated to: {self.student_condition}")
