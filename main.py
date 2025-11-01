@@ -14,6 +14,7 @@ import base64
 import re
 from rich import print, pretty
 
+
 pretty.install()
 
 # --- Core Dependencies ---
@@ -24,7 +25,7 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtSvgWidgets import QSvgWidget
 from PyQt6.QtCore import Qt, QTimer, pyqtSignal, QObject
-from PyQt6.QtGui import QPixmap, QImage
+from PyQt6.QtGui import QPixmap, QImage, QFont # Import QFont
 
 # --- External Libraries ---
 from dotenv import load_dotenv
@@ -78,7 +79,15 @@ class PracticeWidget(QWidget):
         self.layout().addWidget(main_splitter)
         
         left_panel = QFrame(); left_layout = QVBoxLayout(left_panel)
-        self.progress_bar = QProgressBar(); self.question_display = QTextEdit("..."); self.svg_widget = QSvgWidget()
+        self.progress_bar = QProgressBar()
+        
+        # --- FIX 1: Add a font that supports math symbols ---
+        symbol_font = QFont("Segoe UI", 16) 
+        
+        self.question_display = QTextEdit("...")
+        self.question_display.setFont(symbol_font) # Apply the font
+        
+        self.svg_widget = QSvgWidget()
         left_layout.addWidget(self.progress_bar); left_layout.addWidget(self.question_display, 1); left_layout.addWidget(self.svg_widget, 2)
         main_splitter.addWidget(left_panel)
         
@@ -152,7 +161,12 @@ class PracticeWidget(QWidget):
         bubble = QTextEdit(message); bubble.setReadOnly(True)
         align = Qt.AlignmentFlag.AlignLeft if sender == "Assistant" else Qt.AlignmentFlag.AlignRight
         style = ("background-color: #E5E5EA; color: black;" if sender == "Assistant" else "background-color: #00519E; color: white;")
-        bubble.setStyleSheet(f"{style} border-radius: 10px; padding: 10px; font-size: 14px;")
+        
+        # --- FIX 2: Apply the symbol-supporting font to chat bubbles ---
+        symbol_font = QFont("Segoe UI", 14) 
+        bubble.setFont(symbol_font)
+        
+        bubble.setStyleSheet(f"{style} border-radius: 10px; padding: 10px;")
         self.chat_layout.addWidget(bubble, alignment=align)
         QTimer.singleShot(100, lambda: self.scroll_area.verticalScrollBar().setValue(self.scroll_area.verticalScrollBar().maximum()))
 
@@ -165,7 +179,8 @@ class MainWindow(QMainWindow):
 
         # --- Load Quiz Data ---
         try:
-            with open("lessons\quiz.json", "r") as f:
+            # --- FIX 3: Add encoding="utf-8" here ---
+            with open("lessons\quiz.json", "r", encoding="utf-8") as f:
                 self.quiz_data = json.load(f)
         except FileNotFoundError:
             print("CRITICAL ERROR: quiz.json not found!")
@@ -213,7 +228,7 @@ class MainWindow(QMainWindow):
             self.lesson_to_start = "lesson_remedial.json"
             tts_message = f"You did well! Let's work on {weak_topic} to get even better."
         else:
-            self.lesson_to_start = "lesson_advanced.json"
+            self.lesson_to_start = "lesson_advanced.json" # Assuming you'll create this
             tts_message = f"Excellent work! Let's review {weak_topic} to perfect your skills."
 
         self.orchestrator.speak(tts_message) # Use the new TTS-only method
@@ -311,7 +326,9 @@ class TutorOrchestrator:
     
     def load_lesson(self, filename):
         try:
-            with open(self.base_dir / "lessons" / filename, 'r') as f: self.current_lesson = json.load(f)
+            # --- FIX 4: Add encoding="utf-8" here ---
+            with open(self.base_dir / "lessons" / filename, 'r', encoding="utf-8") as f: 
+                self.current_lesson = json.load(f)
             self.current_step_index = 0; self.process_current_step()
         except FileNotFoundError: self.ui.add_chat_message("Assistant", f"Error: Lesson file '{filename}' not found.")
 
@@ -461,6 +478,11 @@ class TutorOrchestrator:
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    
+    default_font = QFont("Segoe UI", 12)
+    app.setFont(default_font) 
+    
     main_window = MainWindow()
     main_window.show()
     sys.exit(app.exec())
+
