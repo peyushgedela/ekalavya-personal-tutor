@@ -1,0 +1,47 @@
+[
+  {
+    "step": 1,
+    "type": "instruction",
+    "question_text": "Let's learn our first big rule: **The Linear Pair Axiom**. \n\nLook at Fig. 6.6. When a ray (like OC) stands on a line (like AB), it forms two adjacent angles (∠AOC and ∠BOC). These two angles *always* add up to 180°. So, ∠AOC + ∠BOC = 180°.",
+    "svg_file": "Fig_6.6_linear_pair.svg",
+    "feedback_text": "A 'linear pair' just means two angles that are adjacent (next to each other) and together they form a perfect straight line (180°).",
+    "solution_keywords": [],
+    "pedagogical_goal": "Introduce and define the Linear Pair Axiom (Axiom 6.1) using the textbook diagram."
+  },
+  {
+    "step": 2,
+    "type": "validation",
+    "question_text": "Practice: Using Fig. 6.6, if ∠AOC = 70°, what is the measure of ∠BOC?",
+    "svg_file": "Fig_6.6_linear_pair.svg",
+    "feedback_text": "Remember, ∠AOC and ∠BOC form a linear pair, so they must add up to 180°. You need to calculate 180° - 70°.",
+    "solution_keywords": ["110", "110 degrees", "180 - 70 = 110"],
+    "pedagogical_goal": "Apply the Linear Pair Axiom in a simple calculation."
+  },
+  {
+    "step": 3,
+    "type": "instruction",
+    "question_text": "Here's the second big rule: **Vertically Opposite Angles**. \n\nWhen two lines (like AB and CD) cross each other, they form four angles. The angles that are directly *opposite* each other are called 'vertically opposite angles'. These angles are *always equal*.\nIn Fig. 6.8: ∠AOC = ∠BOD (Pair 1) and ∠AOD = ∠BOC (Pair 2).",
+    "svg_file": "Fig_6.8_vertically_opposite.svg",
+    "feedback_text": "An easy way to spot them: they form an 'X' shape. The angles on the top and bottom of the 'X' are equal, and the angles on the left and right are equal.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Introduce and define the Vertically Opposite Angles Theorem (Theorem 6.1)."
+  },
+  {
+    "step": 4,
+    "type": "validation",
+    "question_text": "Practice: Using Fig. 6.8, if ∠AOD = 125°, what is the measure of ∠BOC?",
+    "svg_file": "Fig_6.8_vertically_opposite.svg",
+    "feedback_text": "Look at the diagram. Are ∠AOD and ∠BOC a linear pair (next to each other on a line) or vertically opposite (across from each other)? What does the rule say?",
+    "solution_keywords": ["125", "125 degrees", "equal", "vertically opposite"],
+    "pedagogical_goal": "Apply the Vertically Opposite Angles Theorem in a simple calculation."
+  },
+  {
+    "step": 5,
+    "type": "validation",
+    "question_text": "Let's combine them. In Fig. 6.8, if ∠AOD = 125°, what is the measure of ∠AOC?",
+    "svg_file": "Fig_6.8_vertically_opposite.svg",
+    "feedback_text": "This time, ∠AOD and ∠AOC are *not* vertically opposite. They are *adjacent* and together they form the straight line CD. What rule do we use for that?",
+    "solution_keywords": ["55", "55 degrees", "180 - 125 = 55", "linear pair"],
+    "pedagogical_goal": "Apply the Linear Pair Axiom in a context where vertically opposite angles are also present, forcing the student to choose the correct rule."
+  }
+]

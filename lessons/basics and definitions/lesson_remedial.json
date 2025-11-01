@@ -1,0 +1,47 @@
+[
+  {
+    "step": 1,
+    "type": "instruction",
+    "question_text": "Let's learn 3 key rules for when parallel lines (m || n) are cut by a transversal (t). \n[Image of Fig. 6.18 from NCERT textbook]\nThese rules help us find any angle if we just know one!",
+    "svg_file": "Fig_6.18.svg",
+    "feedback_text": "A 'transversal' is just the line that crosses the other two. We will focus on the 8 angles it creates.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Introduce the topic and the 3 main angle relationships."
+  },
+  {
+    "step": 2,
+    "type": "instruction",
+    "question_text": "Rule 1: **Corresponding Angles are EQUAL**.\nThese are in the 'F-pattern'. They are in the same matching spot at each intersection. (e.g., ∠1 and ∠5)\nRule 2: **Alternate Interior Angles are EQUAL**.\nThese are in the 'Z-pattern'. They are on opposite sides of the transversal and *between* the parallel lines. (e.g., ∠4 and ∠6)\nRule 3: **Consecutive Interior Angles add to 180°**.\nThese are in the 'C-pattern'. They are on the same side of the transversal and *between* the parallel lines. (e.g., ∠4 + ∠5 = 180°)",
+    "svg_file": "F_Z_C_patterns.svg",
+    "feedback_text": "Remember: F and Z patterns are EQUAL. The C pattern is the special one that ADDS TO 180°.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Define and provide visual mnemonics (F, Z, C) for the three main theorems."
+  },
+  {
+    "step": 3,
+    "type": "validation",
+    "question_text": "Practice (Fig. 6.18): If line m || n and ∠2 = 70°, what is ∠6? What rule or pattern is this?",
+    "svg_file": "Fig_6.18.svg",
+    "feedback_text": "Look at ∠2 (top-left) and ∠6 (bottom-left). They are in the same 'matching spot'. Which pattern is this (F, Z, or C)? Are they equal or do they add to 180°?",
+    "solution_keywords": ["70", "70 degrees", "Corresponding Angles", "F-pattern", "Equal"],
+    "pedagogical_goal": "Apply the Corresponding Angles Axiom."
+  },
+  {
+    "step": 4,
+    "type": "validation",
+    "question_text": "Practice (Fig. 6.18): If line m || n and ∠3 = 85°, what is ∠5? What rule or pattern is this?",
+    "svg_file": "Fig_6.18.svg",
+    "feedback_text": "Look at ∠3 (top-right, interior) and ∠5 (bottom-left, interior). They are on opposite sides and 'inside'. Which pattern is this? Are they equal or do they add to 180°?",
+    "solution_keywords": ["85", "85 degrees", "Alternate Interior Angles", "Z-pattern", "Equal"],
+    "pedagogical_goal": "Apply the Alternate Interior Angles Theorem."
+  },
+  {
+    "step": 5,
+    "type": "validation",
+    "question_text": "Practice (Fig. 6.18): If line m || n and ∠4 = 115°, what is ∠5? What rule or pattern is this?",
+    "svg_file": "Fig_6.18.svg",
+    "feedback_text": "Look at ∠4 (top-left, interior) and ∠5 (bottom-left, interior). They are on the same side and 'inside'. This is the C-pattern. Are they equal or do they add to 180°?",
+    "solution_keywords": ["65", "65 degrees", "180 - 115 = 65", "Consecutive Interior Angles", "C-pattern", "Supplementary"],
+    "pedagogical_goal": "Apply the Consecutive Interior Angles Theorem (supplementary)."
+  }
+]

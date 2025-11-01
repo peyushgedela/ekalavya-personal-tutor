@@ -1,0 +1,47 @@
+[
+  {
+    "step": 1,
+    "type": "instruction",
+    "question_text": "Let's learn our first rule for triangles: **The Angle Sum Property** (Theorem 6.7).\n\nIt's simple: The sum of the three interior angles of *any* triangle is *always* 180°.\n∠1 + ∠2 + ∠3 = 180°.",
+    "svg_file": "Fig_6.34_triangle.svg",
+    "feedback_text": "This is true for all triangles—big, small, right-angled, or scalene. The three angles inside always add up to 180°.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Introduce the Angle Sum Property of a Triangle (Theorem 6.7)."
+  },
+  {
+    "step": 2,
+    "type": "validation",
+    "question_text": "Practice: If a triangle has two angles measuring 50° and 70°, what is the third angle?",
+    "svg_file": "triangle_angles_problem.svg",
+    "feedback_text": "Remember, all three must add up to 180°. First, add the two angles you know (50° + 70°). Then, subtract that sum from 180°.",
+    "solution_keywords": ["60", "60 degrees", "180 - (50 + 70) = 60"],
+    "pedagogical_goal": "Apply the Angle Sum Property in a direct calculation."
+  },
+  {
+    "step": 3,
+    "type": "instruction",
+    "question_text": "Now for the second rule: **The Exterior Angle Theorem** (Theorem 6.8).\n\nIf you extend one side of a triangle, it creates an 'exterior angle' (like ∠4). This exterior angle is *always equal* to the sum of the two *interior opposite* angles (∠1 and ∠2).\n∠4 = ∠1 + ∠2.",
+    "svg_file": "Fig_6.36_exterior_angle.svg",
+    "feedback_text": "Be careful: it's not equal to all three angles, and it's not equal to its neighbor ∠3. It's equal to the *sum of the two angles farthest away*.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Introduce the Exterior Angle Theorem (Theorem 6.8), emphasizing 'interior opposite'."
+  },
+  {
+    "step": 4,
+    "type": "validation",
+    "question_text": "Practice: In Fig. 6.36, if the exterior angle ∠4 = 120° and the interior angle ∠1 = 50°, what is the other interior opposite angle, ∠2?",
+    "svg_file": "Fig_6.36_exterior_angle.svg",
+    "feedback_text": "The rule is ∠4 = ∠1 + ∠2. So, 120° = 50° + ∠2. How do you solve for ∠2?",
+    "solution_keywords": ["70", "70 degrees", "120 - 50 = 70"],
+    "pedagogical_goal": "Apply the Exterior Angle Theorem in a 'find the missing part' calculation."
+  },
+  {
+    "step": 5,
+    "type": "validation",
+    "question_text": "Let's solve **Exercise 6.3, Problem 1** (Fig. 6.39).\n\nGiven: ∠SPR = 135° and ∠PQT = 110°. Find ∠PRQ.\n(Hint: First find the *inside* angle ∠PQR using its linear pair ∠PQT).",
+    "svg_file": "Fig_6.39.svg",
+    "feedback_text": "∠PQT and ∠PQR are a linear pair, so they add to 180°. First, find ∠PQR (180° - 110°). Then you can use the Exterior Angle Theorem. ∠SPR is an exterior angle to the triangle. It must be equal to ∠PQR + ∠PRQ.",
+    "solution_keywords": ["65", "65 degrees", "∠PQR = 180 - 110 = 70", "∠SPR = ∠PQR + ∠PRQ", "135 = 70 + ∠PRQ", "∠PRQ = 135 - 70 = 65"],
+    "pedagogical_goal": "Solve a multi-step problem by combining the Linear Pair Axiom and the Exterior Angle Theorem."
+  }
+]

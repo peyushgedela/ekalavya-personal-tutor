@@ -1,0 +1,66 @@
+[
+  {
+    "step": 1,
+    "type": "instruction",
+    "question_text": "Let's review the **Proof of Theorem 6.7** (Angle Sum Property).\n\nTo prove ∠1 + ∠2 + ∠3 = 180°, we draw a line XPY parallel to QR through P.\n1. Since XPY is a line, ∠4 + ∠1 + ∠5 = 180° (Linear Pair Axiom).\n2. Since XPY || QR, then ∠4 = ∠2 (Alternate Interior Angles) and ∠5 = ∠3 (Alternate Interior Angles).\n3. Substitute (2) into (1): (∠2) + ∠1 + (∠3) = 180°.",
+    "svg_file": "Fig_6.35_proof.svg",
+    "feedback_text": "This is a classic proof. It cleverly uses the properties of parallel lines (which we just learned) to prove the properties of a triangle. The key is the construction of the parallel line XPY.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Guide the student through the formal proof of the Angle Sum Property (Theorem 6.7)."
+  },
+  {
+    "step": 2,
+    "type": "instruction",
+    "question_text": "Now, the **Proof of Theorem 6.8** (Exterior Angle Theorem).\n\nGiven ΔPQR with side QR produced to S.\n1. We know ∠3 + ∠4 = 180° (Linear Pair Axiom).\n2. We also know ∠1 + ∠2 + ∠3 = 180° (Angle Sum Property).\n3. From (1) and (2): ∠3 + ∠4 = ∠1 + ∠2 + ∠3.\n4. Subtract ∠3 from both sides: ∠4 = ∠1 + ∠2.",
+    "svg_file": "Fig_6.36_exterior_angle.svg",
+    "feedback_text": "This proof is purely algebraic. It shows that the Exterior Angle Theorem is a direct logical consequence of the Angle Sum Property and the Linear Pair Axiom.",
+    "solution_keywords": [],
+    "pedagogical_goal": "Guide the student through the formal proof of the Exterior Angle Theorem (Theorem 6.8)."
+  },
+  {
+    "step": 3,
+    "type": "validation",
+    "question_text": "Let's solve **Exercise 6.3, Problem 2** (Fig. 6.40).\n\nGiven: ∠X = 62°, ∠XYZ = 54°. YO and ZO are bisectors of ∠XYZ and ∠XZY. \n**Part 1: Find the *entire* angle ∠XZY.**",
+    "svg_file": "Fig_6.40.svg",
+    "feedback_text": "First, use the Angle Sum Property on the *big* triangle, ΔXYZ. The three angles are ∠X, ∠XYZ, and ∠XZY. They must add up to 180°.",
+    "solution_keywords": ["64", "64 degrees", "180 - 62 - 54 = 64"],
+    "pedagogical_goal": "Apply the Angle Sum Property as the first step in a complex problem."
+  },
+  {
+    "step": 4,
+    "type": "validation",
+    "question_text": "Problem 2 (Fig. 6.40) continued...\nWe know ∠XYZ = 54° and you found ∠XZY = 64°. YO and ZO are angle bisectors.\n**Part 2: Find ∠OYZ and ∠OZY.**",
+    "svg_file": "Fig_6.40.svg",
+    "feedback_text": "A 'bisector' cuts an angle in half. Find ∠OYZ (half of ∠XYZ) and ∠OZY (half of ∠XZY).",
+    "solution_keywords": ["∠OYZ = 27", "∠OZY = 32", "54 / 2 = 27", "64 / 2 = 32"],
+    "pedagogical_goal": "Apply the definition of an angle bisector."
+  },
+  {
+    "step": 5,
+    "type": "validation",
+    "question_text": "Problem 2 (Fig. 6.40) final part...\nWe know ∠OYZ = 27° and ∠OZY = 32°.\n**Part 3: Find ∠YOZ.**",
+    "svg_file": "Fig_6.40.svg",
+    "feedback_text": "Now use the Angle Sum Property again, but this time on the *small* triangle, ΔOYZ. The three angles are ∠OYZ, ∠OZY, and ∠YOZ.",
+    "solution_keywords": ["121", "121 degrees", "180 - 27 - 32 = 121"],
+    "pedagogical_goal": "Apply the Angle Sum Property a second time within a smaller, nested triangle."
+  },
+  {
+    "step": 6,
+    "type": "validation",
+    "question_text": "Let's solve **Exercise 6.3, Problem 5** (Fig. 6.43).\n\nGiven: PQ ⊥ PS (so ∠P = 90°), PQ || SR, ∠SQR = 28°, and ∠QRT = 65°.\n**Find x (∠PQS) and y.**",
+    "svg_file": "Fig_6.43.svg",
+    "feedback_text": "This is a puzzle! First, look at ΔSQR. The angle ∠QRT is an *exterior angle* to that triangle. So, ∠QRT = ∠SQR + ∠QSR. Use this to find ∠QSR.\nNext, since PQ || SR, use the transversal QS. What is the relationship between x (∠PQS) and ∠QSR?\nFinally, use the Angle Sum Property in the right-angled triangle ΔPQS to find y.",
+    "solution_keywords": [
+      "x = 37",
+      "y = 53",
+      "x=37, y=53",
+      "65 = 28 + ∠QSR",
+      "∠QSR = 37",
+      "x = ∠QSR = 37",
+      "90 + x + y = 180",
+      "90 + 37 + y = 180",
+      "y = 53"
+    ],
+    "pedagogical_goal": "Solve a complex multi-step problem by synthesizing parallel line properties (alternate interior angles, exterior angle theorem) and triangle properties (angle sum)."
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "question_number": 1,
+    "difficulty": "easy",
+    "cognitive_level": "Remember/Understand",
+    "question": "What is the sum of all three interior angles of any triangle?",
+    "svg_file": "Fig_6.34_triangle.svg",
+    "options": ["90°", "180°", "360°", "It depends on the triangle"],
+    "answer": "180°",
+    "topic": "Angle Sum Property of a Triangle",
+    "misconception_map": {
+      "90°": "Student is confusing the sum of angles in a triangle with a right angle.",
+      "180°": "Correct - Student recalls the Angle Sum Property of a Triangle (Theorem 6.7).",
+      "360°": "Student is confusing the sum of angles in a triangle with a quadrilateral or a full circle.",
+      "It depends on the triangle": "Student incorrectly thinks different types of triangles (acute, obtuse) have different angle sums."
+    },
+    "pedagogical_purpose": "To test recall of the fundamental Angle Sum Property (Theorem 6.7)."
+  },
+  {
+    "question_number": 2,
+    "difficulty": "easy",
+    "cognitive_level": "Remember/Understand",
+    "question": "If a side of a triangle is produced, the exterior angle so formed is equal to the sum of the:",
+    "svg_file": "Fig_6.36_exterior_angle.svg",
+    "options": [
+      "two interior opposite angles",
+      "three interior angles",
+      "adjacent interior angle",
+      "two adjacent exterior angles"
+    ],
+    "answer": "two interior opposite angles",
+    "topic": "Angle Sum Property of a Triangle",
+    "misconception_map": {
+      "two interior opposite angles": "Correct - Student recalls the Exterior Angle Theorem (Theorem 6.8).",
+      "three interior angles": "Student is confusing the theorem with the angle sum property (which equals 180°).",
+      "adjacent interior angle": "Student is confusing the theorem with a linear pair (they add to 180°).",
+      "two adjacent exterior angles": "Student is guessing or confused by the terminology."
+    },
+    "pedagogical_purpose": "To test recall of the Exterior Angle Theorem (Theorem 6.8)."
+  },
+  {
+    "question_number": 3,
+    "difficulty": "moderate",
+    "cognitive_level": "Apply/Analyze",
+    "question": "Two angles of a triangle measure 60° and 70°. What is the measure of the third angle?",
+    "svg_file": "triangle_angles_problem.svg",
+    "options": ["50°", "60°", "70°", "130°"],
+    "answer": "50°",
+    "topic": "Angle Sum Property of a Triangle",
+    "misconception_map": {
+      "50°": "Correct - Student correctly applies the Angle Sum Property (180° - 60° - 70° = 50°).",
+      "60°": "Student may be guessing or assuming the triangle is isosceles.",
+      "70°": "Student may be guessing or assuming the triangle is isosceles.",
+      "130°": "Student incorrectly added the two angles (60° + 70°) instead of subtracting their sum from 180°."
+    },
+    "pedagogical_purpose": "To test the application of the Angle Sum Property in a simple calculation."
+  },
+  {
+    "question_number": 4,
+    "difficulty": "moderate",
+    "cognitive_level": "Apply/Analyze",
+    "question": "In Fig. 6.36, if the exterior angle ∠4 = 115° and the interior angle ∠1 = 45°, what is the measure of angle ∠2?",
+    "svg_file": "Fig_6.36_exterior_angle.svg",
+    "options": ["60°", "70°", "115°", "160°"],
+    "answer": "70°",
+    "topic": "Angle Sum Property of a Triangle",
+    "misconception_map": {
+      "60°": "Student made a calculation error (115 - 45 = 70, but may miscalculate).",
+      "70°": "Correct - Student correctly applies the Exterior Angle Theorem (∠4 = ∠1 + ∠2, so 115° = 45° + ∠2, which means ∠2 = 70°).",
+      "115°": "Student thinks the interior angle is equal to the exterior angle.",
+      "160°": "Student incorrectly added the two angles (115° + 45°) instead of subtracting."
+    },
+    "pedagogical_purpose": "To test the application of the Exterior Angle Theorem in a simple calculation."
+  },
+  {
+    "question_number": 5,
+    "difficulty": "difficult",
+    "cognitive_level": "Analyze/Evaluate",
+    "question": "In Fig. 6.37, given ∠TQR = 40° and ∠SPR = 30°, and QT ⊥ PR (meaning ∠QTR = 90°). What is the value of y?",
+    "svg_file": "Fig_6.37.svg",
+    "options": ["70°", "80°", "120°", "130°"],
+    "answer": "80°",
+    "topic": "Angle Sum Property of a Triangle",
+    "misconception_map": {
+      "70°": "Student may have added 40° + 30° incorrectly, or misidentified the angles.",
+      "80°": "Correct - Student must first find x in ΔTQR (180-90-40 = 50°), then use x as an interior angle for the exterior angle y in ΔPSR (y = x + ∠SPR = 50° + 30° = 80°).",
+      "120°": "Student may have incorrectly used 90° + 30°.",
+      "130°": "Student may have incorrectly added 90° + 40°."
+    },
+    "pedagogical_purpose": "To test the ability to combine the Angle Sum Property and the Exterior Angle Theorem in a multi-step problem."
+  }
+]

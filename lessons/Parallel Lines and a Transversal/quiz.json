@@ -1,0 +1,97 @@
+[
+  {
+    "question_number": 1,
+    "difficulty": "easy",
+    "cognitive_level": "Remember/Understand",
+    "question": "In Fig. 6.18, if line m || n and ∠1 = 110°, what is the measure of its corresponding angle, ∠5?",
+    "svg_file": "Fig_6.18.svg",
+    "options": ["110°", "70°", "180°", "Cannot be determined"],
+    "answer": "110°",
+    "topic": "Parallel Lines and a Transversal",
+    "misconception_map": {
+      "110°": "Correct - Student understands that corresponding angles are equal when lines are parallel (Axiom 6.3).",
+      "70°": "Student is confusing corresponding angles with consecutive interior angles (supplementary).",
+      "180°": "Student is confusing the angle's measure with the sum of a linear pair.",
+      "Cannot be determined": "Student does not know the relationship."
+    },
+    "pedagogical_purpose": "To test basic recall of the Corresponding Angles Axiom."
+  },
+  {
+    "question_number": 2,
+    "difficulty": "easy",
+    "cognitive_level": "Remember/Understand",
+    "question": "In Fig. 6.18, if line m || n and ∠4 = 65°, what is the measure of its alternate interior angle, ∠6?",
+    "svg_file": "Fig_6.18.svg",
+    "options": ["65°", "115°", "25°", "Cannot be determined"],
+    "answer": "65°",
+    "topic": "Parallel Lines and a Transversal",
+    "misconception_map": {
+      "65°": "Correct - Student understands that alternate interior angles are equal when lines are parallel (Theorem 6.2).",
+      "115°": "Student is confusing alternate interior angles with consecutive interior angles (supplementary).",
+      "25°": "Student is confusing the relationship with complementary angles (90° - 65°).",
+      "Cannot be determined": "Student does not know the relationship."
+    },
+    "pedagogical_purpose": "To test basic recall of the Alternate Interior Angles Theorem."
+  },
+  {
+    "question_number": 3,
+    "difficulty": "easy",
+    "cognitive_level": "Remember/Understand",
+    "question": "In Fig. 6.18, if line m || n and ∠3 = 80°, what is the measure of its consecutive interior angle, ∠6?",
+    "svg_file": "Fig_6.18.svg",
+    "options": ["80°", "100°", "180°", "10°"],
+    "answer": "100°",
+    "topic": "Parallel Lines and a Transversal",
+    "misconception_map": {
+      "80°": "Student is confusing consecutive interior angles with alternate or corresponding angles (thinks they are equal).",
+      "100°": "Correct - Student understands that consecutive interior angles are supplementary (180° - 80° = 100°) (Theorem 6.4).",
+      "180°": "Student knows the number 180° is involved but thinks it's the answer, not the sum.",
+      "10°": "Student is confusing the relationship with complementary angles (90° - 80°)."
+    },
+    "pedagogical_purpose": "To test recall of the Consecutive Interior Angles Theorem (supplementary)."
+  },
+  {
+    "question_number": 4,
+    "difficulty": "moderate",
+    "cognitive_level": "Analyze/Evaluate",
+    "question": "A transversal intersects two lines. A pair of alternate interior angles are found to be equal. What can you conclude based on this fact?",
+    "svg_file": "transversal_unknown_lines.svg",
+    "options": [
+      "The lines are perpendicular.",
+      "The lines are parallel.",
+      "The lines will intersect.",
+      "Nothing can be concluded."
+    ],
+    "answer": "The lines are parallel.",
+    "topic": "Parallel Lines and a Transversal",
+    "misconception_map": {
+      "The lines are perpendicular.": "Student is confusing angle relationships.",
+      "The lines are parallel.": "Correct - Student correctly applies the *converse* of the alternate interior angles theorem (Theorem 6.3).",
+      "The lines will intersect.": "Student is confused; equal alternate interior angles *prevent* intersection.",
+      "Nothing can be concluded.": "Student does not know the converse theorems."
+    },
+    "pedagogical_purpose": "To test understanding of the converse theorems (proving lines are parallel)."
+  },
+  {
+    "question_number": 5,
+    "difficulty": "moderate",
+    "cognitive_level": "Remember/Understand",
+    "question": "Line 'a' is parallel to line 'b'. Line 'c' is also parallel to line 'b'. What is the relationship between line 'a' and line 'c'?",
+    "svg_file": "three_parallel_lines.svg",
+    "options": [
+      "They are parallel to each other.",
+      "They are perpendicular to each other.",
+      "They intersect.",
+      "The relationship cannot be determined."
+    ],
+    "answer": "They are parallel to each other.",
+    "topic": "Parallel Lines and a Transversal",
+    "misconception_map": {
+      "They are parallel to each other.": "Correct - Student recalls Theorem 6.6 (Lines parallel to the same line are parallel to each other).",
+      "They are perpendicular to each other.": "Student is guessing or confusing properties.",
+      "They intersect.": "Student does not understand the transitive property of parallel lines.",
+      "The relationship cannot be determined.": "Student does not know Theorem 6.6."
+    },
+    "pedagogical_purpose": "To test recall of Theorem 6.6."
+  }
+]
