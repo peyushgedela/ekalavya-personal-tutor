@@ -48,10 +48,14 @@ class TutorOrchestrator:
         self.attempt_counter = 0
         self.student_condition = "attentive"
 
-        # Connect UI signals
-        self.ui.practice_widget.check_work_requested.connect(self.on_check_work)
-        self.ui.practice_widget.ask_question_requested.connect(self.on_ask_question)
-        self.ui.practice_widget.student_condition_updated.connect(self.on_student_condition_update)
+        # Signal connections will be done when practice_widget is created
+
+    def connect_practice_widget_signals(self):
+        """Connect signals for the practice widget after it's created"""
+        if self.ui.practice_widget:
+            self.ui.practice_widget.check_work_requested.connect(self.on_check_work)
+            self.ui.practice_widget.ask_question_requested.connect(self.on_ask_question)
+            self.ui.practice_widget.student_condition_updated.connect(self.on_student_condition_update)
 
     def on_student_condition_update(self, condition: str):
         """Receives the new, richer condition string and updates the state."""
@@ -83,10 +87,17 @@ class TutorOrchestrator:
 
         svg_path = str(self.base_dir / "assets" / step['svg_file'])
         if os.path.exists(svg_path):
-            self.ui.update_svg(svg_path)
+            self.ui.update_image(svg_path)
         else:
-            print(f"Warning: SVG file not found at {svg_path}")
-            self.ui.add_chat_message("Assistant", f"(Diagram '{step['svg_file']}' is missing)")
+            # Try looking for other image formats
+            for ext in ['.png', '.jpg', '.jpeg']:
+                image_path = str(self.base_dir / "assets" / step['svg_file'].replace('.svg', ext))
+                if os.path.exists(image_path):
+                    self.ui.update_image(image_path)
+                    break
+            else:  # No image found in any format
+                print(f"Warning: Image file not found for {step['svg_file']}")
+                self.ui.add_chat_message("Assistant", f"(Diagram '{step['svg_file']}' is missing)")
 
         validation_steps = [s for s in self.current_lesson if s['type'] == 'validation']
         completed_steps = len([s for s in self.current_lesson[:self.current_step_index] if s['type'] == 'validation'])
@@ -164,7 +175,7 @@ class TutorOrchestrator:
         else:
             self.speak_and_show("I didn't catch that.", "Assistant")
 
-    def get_llm_response(self, prompt, model="gemma2-9b-it"):
+    def get_llm_response(self, prompt, model="meta-llama/llama-guard-4-12b"):
         try:
             completion = self.groq_client.chat.completions.create(messages=[{"role": "user", "content": prompt}], model=model)
             return completion.choices[0].message.content

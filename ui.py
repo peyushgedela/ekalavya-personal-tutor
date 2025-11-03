@@ -5,14 +5,10 @@ import pathlib
 import cv2
 import numpy as np
 import pyaudio
-# mediapipe can fail to import on Windows if the native DLLs / redistributables
-# aren't present or if there's an architecture mismatch. Import in a try/except
-# so the app can still run (head-pose features will be disabled).
-try:
-    import mediapipe as mp
-except Exception as _err:  # keep broad to capture DLL import failures
-    mp = None
-    print(f"Warning: mediapipe import failed: {_err}")
+import base64
+import time
+from datetime import datetime
+from groq import Groq
 from rich import print, pretty
 
 pretty.install()
@@ -32,6 +28,7 @@ from faster_whisper import WhisperModel
 
 from WelcomeWidget import WelcomeWidget
 from QuizWidget import QuizWidget
+from TopicsWidget import TopicsWidget
 
 
 class PracticeWidget(QWidget):
@@ -49,8 +46,10 @@ class PracticeWidget(QWidget):
         left_panel = QFrame(); left_layout = QVBoxLayout(left_panel)
         self.progress_bar = QProgressBar(); 
         self.question_display = QTextEdit("..."); 
-        self.svg_widget = QSvgWidget()
-        left_layout.addWidget(self.progress_bar); left_layout.addWidget(self.question_display, 1); left_layout.addWidget(self.svg_widget, 2)
+        self.image_label = QLabel()
+        self.image_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.image_label.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        left_layout.addWidget(self.progress_bar); left_layout.addWidget(self.question_display, 1); left_layout.addWidget(self.image_label, 2)
         main_splitter.addWidget(left_panel)
         
         # --- Right Panel (MODIFIED) ---
@@ -89,44 +88,28 @@ class PracticeWidget(QWidget):
         # --- Initialize ASR (no change) ---
         self.stt_model = WhisperModel("tiny.en")
         
-        # --- Initialize MediaPipe (if available) ---
-        if mp is not None:
-            try:
-                self.mp_face_mesh = mp.solutions.face_mesh
-                self.face_mesh = self.mp_face_mesh.FaceMesh(
-                    max_num_faces=1,
-                    refine_landmarks=True,
-                    min_detection_confidence=0.5,
-                    min_tracking_confidence=0.5)
-                self.status_label.setText("Status: Ready (head-pose enabled)")
-            except Exception as e:
-                # If MediaPipe failed to initialize, disable pose features
-                print(f"Warning: mediapipe initialization failed: {e}")
-                self.mp_face_mesh = None
-                self.face_mesh = None
-                self.status_label.setText("Status: Mediapipe init failed — head-pose disabled")
-        else:
-            # mediapipe import failed earlier; disable pose features
-            self.mp_face_mesh = None
-            self.face_mesh = None
-            self.status_label.setText("Status: Mediapipe unavailable — head-pose disabled")
-        
-        # --- Initialize Webcam ---
+        # --- Initialize Webcam Timer ---
         self.cap = None
-        self.webcam_timer = QTimer(self)
-        self.webcam_timer.timeout.connect(self.update_frame_and_pose) # Renamed this function
-        
-        # Remove the old condition_timer
+        self.webcam_timer = QTimer(self)  # For frame updates
+        self.webcam_timer.timeout.connect(self.update_frame)
         self.last_frame = None
+        
+        # Commented out engagement analysis for now
+        # self.client = Groq()
+        # self.analysis_timer = QTimer(self)  # For periodic analysis
+        # self.analysis_timer.timeout.connect(self.analyze_student_state)
+        # self.last_analysis_time = 0
+        
+        self.status_label.setText("Status: Ready (periodic analysis enabled)")
 
     def activate_camera(self):
         if self.cap is None:
             self.cap = cv2.VideoCapture(0)
-        self.webcam_timer.start(30) # 30ms timer for ~33 FPS
-        print("Camera and Head Pose analysis activated.")
+        self.webcam_timer.start(30)  # 30ms timer for ~33 FPS
+        print("Camera activated.")
     
-    def update_frame_and_pose(self):
-        """This function now does both: updates the video feed AND analyzes pose."""
+    def update_frame(self):
+        """Updates the video feed display."""
         if not (self.cap and self.cap.isOpened()):
             return
 
@@ -136,12 +119,9 @@ class PracticeWidget(QWidget):
             
         # Flip the frame for a "selfie" view
         frame = cv2.flip(frame, 1)
-        self.last_frame = frame # Store the flipped frame
+        self.last_frame = frame  # Store the flipped frame
 
-        # Analyze the pose first
-        self.analyze_head_pose(frame)
-
-        # Convert for Qt
+        # Convert for Qt display
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         h, w, ch = frame_rgb.shape
         qt_img = QImage(frame_rgb.data, w, h, ch * w, QImage.Format.Format_RGB888)
@@ -149,86 +129,16 @@ class PracticeWidget(QWidget):
             self.video_label.width(), self.video_label.height(), Qt.AspectRatioMode.KeepAspectRatio
         ))
     
-    def analyze_head_pose(self, frame):
+    def analyze_student_state(self):
         """
-        Analyzes the frame to find head pose and updates the status.
-        Replaces the old analyze_student_condition.
+        Temporarily disabled - will be re-implemented later.
         """
-        # Convert to RGB for MediaPipe
-        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        frame_rgb.flags.writeable = False # Performance optimization
-        results = self.face_mesh.process(frame_rgb)
-        
-        status_text = "Not Detected"
-        status_color = "#AAAAAA" # Grey
+        # Analysis functionality is commented out
+        pass
 
-        if results.multi_face_landmarks:
-            face_landmarks = results.multi_face_landmarks[0]
-            
-            # --- Head Pose Logic ---
-            # This is a simplified 3D-to-2D calculation (SolvePnP)
-            # We get key points from MediaPipe's 468 landmarks
-            h, w, _ = frame.shape
-            face_2d = []
-            face_3d = []
-            
-            # Key points: Nose, Chin, Left/Right Eye, Left/Right Mouth
-            key_points_indices = [1, 152, 263, 33, 287, 57] 
-            
-            for idx, lm in enumerate(face_landmarks.landmark):
-                if idx in key_points_indices:
-                    x, y = int(lm.x * w), int(lm.y * h)
-                    face_2d.append([x, y])
-            
-            # These are generic 3D model coordinates
-            face_3d = [
-                [0.0, 0.0, 0.0],    # Nose tip (1)
-                [0.0, -330.0, -65.0], # Chin (152)
-                [-225.0, 170.0, -135.0], # Left eye left corner (263)
-                [225.0, 170.0, -135.0],  # Right eye right corner (33)
-                [-150.0, -150.0, -125.0], # Left Mouth corner (287)
-                [150.0, -150.0, -125.0]   # Right mouth corner (57)
-            ]
-            
-            face_2d = np.array(face_2d, dtype=np.float64)
-            face_3d = np.array(face_3d, dtype=np.float64)
-            
-            focal_length = 1 * w
-            cam_matrix = np.array([[focal_length, 0, w / 2],
-                                   [0, focal_length, h / 2],
-                                   [0, 0, 1]])
-            
-            dist_matrix = np.zeros((4, 1), dtype=np.float64)
-            
-            success, rot_vec, _ = cv2.solvePnP(face_3d, face_2d, cam_matrix, dist_matrix)
-            
-            if success:
-                # Get rotation matrix
-                rmat, _ = cv2.Rodrigues(rot_vec)
-                
-                # Get pitch, yaw, roll (in degrees)
-                angles, _, _, _, _, _ = cv2.RQDecomp3x3(rmat)
-                pitch, yaw, roll = angles[0], angles[1], angles[2]
 
-                # --- Define States based on Head Pose ---
-                if pitch > 20: # Looking down
-                    status_text = "Desk Focus"
-                    status_color = "#2ECC71" # Green
-                elif abs(yaw) > 30 or pitch < -15: # Looking side-to-side or up
-                    status_text = "Away"
-                    status_color = "#F1C40F" # Yellow
-                else: # Looking forward
-                    status_text = "Screen Focus"
-                    status_color = "#50A0FF" # Blue
-            else:
-                status_text = "Error: PnP Failed"
         
-        # --- Update the UI and Emit the Signal ---
-        self.status_label.setText(f"Status: {status_text}")
-        self.status_label.setStyleSheet(f"color: {status_color}; font-weight: bold; font-size: 14px;")
-        
-        # Send this new, richer state to the orchestrator
-        self.student_condition_updated.emit(status_text)
+
 
     def start_listening(self):
         self.ask_question_btn.setText("Listening..."); self.ask_question_btn.setEnabled(False)
@@ -261,50 +171,82 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Ekalavya AI Tutor")
         self.setGeometry(100, 100, 1200, 800)
-
-        try:
-            with open("lessons\\quiz.json", "r", encoding="utf-8") as f:
-                self.quiz_data = json.load(f)
-        except FileNotFoundError:
-            print("CRITICAL ERROR: quiz.json not found!")
-            sys.exit()
+        self.setStyleSheet("""
+            QMainWindow {
+                background-color: #F5F6FA;
+            }
+        """)
 
         self.stacked_widget = QStackedWidget()
         self.setCentralWidget(self.stacked_widget)
 
         self.welcome_widget = WelcomeWidget()
-        self.quiz_widget = QuizWidget(self.quiz_data)
-        self.practice_widget = PracticeWidget()
+        self.topics_widget = TopicsWidget()
+        self.quiz_widget = None  # Will be initialized when topic is selected
+        self.practice_widget = None  # Will be initialized when needed
 
         self.stacked_widget.addWidget(self.welcome_widget)
-        self.stacked_widget.addWidget(self.quiz_widget)
-        self.stacked_widget.addWidget(self.practice_widget)
+        self.stacked_widget.addWidget(self.topics_widget)
 
         # instantiate orchestrator here to avoid circular imports
         from orchestrator import TutorOrchestrator
         self.orchestrator = TutorOrchestrator(self)
 
+        self.current_topic_path = ""
         self.lesson_to_start = ""
 
-        self.welcome_widget.start_quiz.connect(self.show_quiz)
-        self.quiz_widget.quiz_reported.connect(self.show_report_and_speak)
-        self.quiz_widget.proceed_to_learning.connect(self.start_tutor)
+        # Connect signals
+        self.welcome_widget.start_quiz.connect(self.show_topics)
+        self.topics_widget.topic_selected.connect(self.topic_selected)
 
         self.show_welcome()
 
+    def topic_selected(self, topic_path: str):
+        """Called when a topic is selected from the topics screen"""
+        self.current_topic_path = topic_path
+        try:
+            quiz_path = os.path.join(topic_path, "quiz.json")
+            with open(quiz_path, "r", encoding="utf-8") as f:
+                quiz_data = json.load(f)
+        except FileNotFoundError:
+            print(f"CRITICAL ERROR: quiz.json not found in {topic_path}!")
+            return
+
+        # Initialize quiz and practice widgets for this topic
+        self.quiz_widget = QuizWidget(quiz_data)
+        self.practice_widget = PracticeWidget()
+        
+        # Add widgets to stacked widget if not already added
+        if self.stacked_widget.indexOf(self.quiz_widget) == -1:
+            self.stacked_widget.addWidget(self.quiz_widget)
+        if self.stacked_widget.indexOf(self.practice_widget) == -1:
+            self.stacked_widget.addWidget(self.practice_widget)
+
+        # Connect signals for the new widgets
+        self.quiz_widget.quiz_reported.connect(self.show_report_and_speak)
+        self.quiz_widget.proceed_to_learning.connect(self.start_tutor)
+        
+        # Connect practice widget signals in the orchestrator
+        self.orchestrator.connect_practice_widget_signals()
+
+        self.show_quiz()
+
     def show_welcome(self):
         self.stacked_widget.setCurrentWidget(self.welcome_widget)
+
+    def show_topics(self):
+        self.stacked_widget.setCurrentWidget(self.topics_widget)
 
     def show_quiz(self):
         self.stacked_widget.setCurrentWidget(self.quiz_widget)
 
     def show_report_and_speak(self, score: int, weak_topic: str):
         print(f"Quiz finished with score: {score}. Weak topic: {weak_topic}")
-        if score < 2:
-            self.lesson_to_start = "lesson_remedial.json"
+        if score < 3:
+            self.lesson_to_start = os.path.join(self.current_topic_path, "lesson_remedial.json")
             tts_message = f"You did well! Let's work on {weak_topic} to get even better."
         else:
-            self.lesson_to_start = "lesson_advanced.json"
+            self.lesson_to_start = os.path.join(self.current_topic_path, "lesson_advanced.json")
             tts_message = f"Excellent work! Let's review {weak_topic} to perfect your skills."
 
         self.orchestrator.speak(tts_message)
@@ -322,8 +264,21 @@ class MainWindow(QMainWindow):
     def update_question(self, text: str):
         self.practice_widget.question_display.setText(text)
 
-    def update_svg(self, svg_path: str):
-        self.practice_widget.svg_widget.load(svg_path)
+    def update_image(self, image_path: str):
+        """Update the image in the practice widget. Supports SVG, PNG, and JPEG formats."""
+        if image_path.lower().endswith('.svg'):
+            svg_widget = QSvgWidget()
+            svg_widget.load(image_path)
+            svg_widget.setMinimumSize(400, 400)
+            self.practice_widget.image_label.setWidget(svg_widget)
+        else:
+            pixmap = QPixmap(image_path)
+            scaled_pixmap = pixmap.scaled(
+                self.practice_widget.image_label.size(),
+                Qt.AspectRatioMode.KeepAspectRatio,
+                Qt.TransformationMode.SmoothTransformation
+            )
+            self.practice_widget.image_label.setPixmap(scaled_pixmap)
 
     def update_progress(self, completed_steps: int, total_steps: int):
         self.practice_widget.progress_bar.setMaximum(max(1, total_steps))

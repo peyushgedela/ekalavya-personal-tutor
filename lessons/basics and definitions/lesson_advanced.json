@@ -2,35 +2,46 @@
   {
     "step": 1,
     "type": "instruction",
-    "question_text": "Let's review the **Converse Theorems**. These are the rules we use to *prove* that two lines are parallel.\n1. **Axiom 6.4:** If a pair of *Corresponding* angles is equal, THEN the lines are parallel.\n2. **Theorem 6.3:** If a pair of *Alternate Interior* angles is equal, THEN the lines are parallel.\n3. **Theorem 6.5:** If a pair of *Consecutive Interior* angles is supplementary (add to 180°), THEN the lines are parallel.",
-    "svg_file": "converse_theorems.svg",
-    "feedback_text": "This is the 'test' for parallel lines. If you can prove any *one* of these three conditions is true, you have successfully proven the lines are parallel.",
+    "question_text": "Let's review the Converse Theorems. These are the rules we use to prove that two lines are parallel.\n1. Axiom 6.4: If a pair of Corresponding angles is equal, THEN the lines are parallel.\n2. Theorem 6.3: If a pair of Alternate Interior angles is equal, THEN the lines are parallel.\n3. Theorem 6.5: If a pair of Consecutive Interior angles is supplementary (add to 180°), THEN the lines are parallel.",
+    "svg_file": "converse.jpg",
+    "feedback_text": "This is the 'test' for parallel lines. If you can prove any one of these three conditions is true, you have successfully proven the lines are parallel.",
     "solution_keywords": [],
     "pedagogical_goal": "Introduce the converse theorems (Axiom 6.4, Thm 6.3, Thm 6.5) as the tools for proving parallelism."
   },
   {
     "step": 2,
     "type": "validation",
-    "question_text": "Let's solve **Exercise 6.2, Problem 1** (Fig. 6.28).\n\nFirst, find x by using its relationship with the 50° angle.",
-    "svg_file": "Fig_6.28.svg",
+    "question_text": "Let's solve Exercise 6.2, Problem 1.\n\nFirst, find x by using its relationship with the 50° angle.",
+    "svg_file": "fig2.jpg",
     "feedback_text": "The 50° angle and 'x' are adjacent angles on a straight line. What is this relationship called, and what is their sum?",
-    "solution_keywords": ["130", "130 degrees", "Linear Pair", "x + 50 = 180", "x = 130"],
+    "solution_keywords": [
+      "130",
+      "130 degrees",
+      "Linear Pair",
+      "x + 50 = 180",
+      "x = 130"
+    ],
     "pedagogical_goal": "Apply the Linear Pair Axiom as the first step in a multi-step problem."
   },
   {
     "step": 3,
     "type": "validation",
-    "question_text": "Problem 1 (Fig. 6.28) continued... Now, find y by using its relationship with the 130° angle on line CD.",
-    "svg_file": "Fig_6.28.svg",
+    "question_text": "Problem 1 continued... Now, find y by using its relationship with the 130° angle on line CD.",
+    "svg_file": "fig2.jpg",
     "feedback_text": "The angle 'y' and the 130° angle are formed by two intersecting lines. What is the relationship between vertically opposite angles?",
-    "solution_keywords": ["130", "130 degrees", "Vertically Opposite Angles", "y = 130"],
+    "solution_keywords": [
+      "130",
+      "130 degrees",
+      "Vertically Opposite Angles",
+      "y = 130"
+    ],
     "pedagogical_goal": "Apply the Vertically Opposite Angles Theorem."
   },
   {
     "step": 4,
     "type": "validation",
-    "question_text": "Problem 1 (Fig. 6.28) final part... We found x = 130° and y = 130°. \n1. What *type* of angle pair are x and y (in relation to lines AB and CD)? \n2. Since they are equal, what can we conclude about lines AB and CD (using a Converse Theorem)?",
-    "svg_file": "Fig_6.28.svg",
+    "question_text": "Problem 1 final part... We found x = 130° and y = 130°. \n1. What type of angle pair are x and y (in relation to lines AB and CD)? \n2. Since they are equal, what can we conclude about lines AB and CD (using a Converse Theorem)?",
+    "svg_file": "fig2.jpg",
     "feedback_text": "Look at the positions of x and y. Are they corresponding, alternate, or consecutive? Since they are equal (both 130°), which Converse Theorem applies?",
     "solution_keywords": [
       "Corresponding Angles",
@@ -44,8 +55,8 @@
   {
     "step": 5,
     "type": "validation",
-    "question_text": "Let's solve **Exercise 6.2, Problem 2** (Fig. 6.29).\n\nGiven: AB || CD, CD || EF, and y:z = 3:7. Find x.\nFirst, what is the relationship between x and z? (Hint: Use Theorem 6.6, AB || EF)",
-    "svg_file": "Fig_6.29.svg",
+    "question_text": "Let's solve Exercise 6.2, Problem 2.\n\nGiven: AB || CD, CD || EF, and y:z = 3:7. Find x.\nFirst, what is the relationship between x and z? (Hint: Use Theorem 6.6, AB || EF)",
+    "svg_file": "fig3.jpg",
     "feedback_text": "Since AB || CD and CD || EF, we know AB || EF (Theorem 6.6). Now, what is the relationship between x and z? Are they alternate interior angles?",
     "solution_keywords": ["x = z", "Alternate Interior Angles", "equal"],
     "pedagogical_goal": "Apply Theorem 6.6 and the Alternate Interior Angles Theorem."
@@ -53,8 +64,8 @@
   {
     "step": 6,
     "type": "validation",
-    "question_text": "Problem 2 (Fig. 6.29) continued... \nWe know x = z. We also know AB || CD, so what is the relationship between x and y? And what is the relationship between y and z?\nUse x+y=180° and x=z to find x, given y:z = 3:7.",
-    "svg_file": "Fig_6.29.svg",
+    "question_text": "Problem 2 continued... \nWe know x = z. We also know AB || CD, so what is the relationship between x and y? And what is the relationship between y and z?\nUse x+y=180° and x=z to find x, given y:z = 3:7.",
+    "svg_file": "fig3.jpg",
     "feedback_text": "x and y are consecutive interior angles, so x + y = 180°. Since x = z, we can substitute 'z' for 'x', which gives us z + y = 180°. \nNow, solve the problem: if y:z = 3:7 and y + z = 180°, find z (which will equal x).",
     "solution_keywords": [
       "126",
@@ -62,7 +73,7 @@
       "x + y = 180",
       "x = z",
       "y + z = 180",
-      "z = (7/10) * 180",
+      "z = (7/10)  180",
       "z = 126",
       "x = 126"
     ],
