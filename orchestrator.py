@@ -139,6 +139,24 @@ class TutorOrchestrator:
         self.thread.start()
 
     def on_analysis_complete(self, result):
+        import datetime
+        import base64
+        debug_dir = self.base_dir / "runs" / "debug"
+        debug_dir.mkdir(parents=True, exist_ok=True)
+        # Save the overhead camera snippet if present
+        image_data = result.get("image") or result.get("frame")
+        if image_data:
+            # If image_data is base64, decode and save as jpg
+            try:
+                if isinstance(image_data, str):
+                    img_bytes = base64.b64decode(image_data)
+                    ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+                    img_path = debug_dir / f"overhead_snapshot_{ts}.jpg"
+                    with open(img_path, "wb") as imgf:
+                        imgf.write(img_bytes)
+            except Exception as e:
+                with open(debug_dir / "camera_image_error.txt", "w", encoding="utf-8") as ef:
+                    ef.write(f"Error saving camera image: {e}\n")
         if "error" in result:
             self.speak_and_show(f"Error: {result['error']}", "Assistant")
             self.ui.set_button_state("practice", enabled=True)
@@ -175,7 +193,7 @@ class TutorOrchestrator:
         else:
             self.speak_and_show("I didn't catch that.", "Assistant")
 
-    def get_llm_response(self, prompt, model="meta-llama/llama-guard-4-12b"):
+    def get_llm_response(self, prompt, model="llama-3.1-8b-instant"):
         try:
             completion = self.groq_client.chat.completions.create(messages=[{"role": "user", "content": prompt}], model=model)
             return completion.choices[0].message.content
@@ -189,28 +207,69 @@ class TutorOrchestrator:
             ocr_text=ocr_text
         )
         response_text = self.get_llm_response(prompt)
-        print(response_text)
+        print(f"Validation LLM Response: {response_text}") # Good for debugging
+
         match = __import__('re').search(r"\{.*\}", response_text, __import__('re').DOTALL)
         if match:
             try:
                 result_json = json.loads(match.group(0))
                 status = result_json.get("status", "").upper()
+                # This is the primary, correct logic path.
                 return status == "COMPLETE"
-            except Exception:
-                pass
-        if "COMPLETE" in response_text.upper():
+            except Exception as e:
+                # Don't just pass, log the error and fall through
+                print(f"Warning: JSON parsing failed ({e}). Using fallback text search.")
+        
+        response_upper = response_text.upper()
+        
+        if "INCOMPLETE" in response_upper or "UNCLEAR" in response_upper:
+            return False
+        
+        if "COMPLETE" in response_upper:
             return True
+            
         return False
 
     def generate_hint_with_llm(self, ocr_text, step):
-        prompt = self.hint_prompt_template.format(
-            step_pedagogical_goal=step['pedagogical_goal'],
-            ocr_text=ocr_text,
-            student_condition=self.student_condition
-        )
+        import logging
+        debug_dir = self.base_dir / "runs" / "debug"
+        debug_dir.mkdir(parents=True, exist_ok=True)
+        # Log the step object
+        with open(debug_dir / "step_debug.json", "w", encoding="utf-8") as f:
+            json.dump(step, f, indent=2)
+        # Log the template
+        with open(debug_dir / "hint_prompt_template.txt", "w", encoding="utf-8") as f:
+            f.write(self.hint_prompt_template)
+        # Convert step dict to an object for attribute access in template
+        class StepObj:
+            def __init__(self, d):
+                for k, v in d.items():
+                    setattr(self, k, v)
+        step_obj = StepObj(step)
+        try:
+            rendered = self.hint_prompt_template.format(step=step_obj, ocr_text=ocr_text)
+        except Exception as e:
+            with open(debug_dir / "format_error.txt", "w", encoding="utf-8") as f:
+                f.write(f"Error: {e}\n")
+                f.write(f"step: {json.dumps(step, indent=2)}\n")
+                f.write(f"ocr_text: {ocr_text}\n")
+            raise
+        # Save the rendered prompt
+        with open(debug_dir / "rendered_prompt.txt", "w", encoding="utf-8") as f:
+            f.write(rendered)
+        prompt = f"""
+        {rendered}
+        """
         response_text = self.get_llm_response(prompt)
+        
         if "<speaking>" in response_text:
-            return response_text.split("<speaking>")[1].split("</speaking>")[0].strip()
+            response_text = response_text.split("<speaking>", 1)[-1]
+            if "</Ekalavya>" in response_text:
+                response_text = response_text.split("</Ekalavya>", 1)[0]
+            elif "</speaking>" in response_text:
+                response_text = response_text.split("</speaking>", 1)[0]
+            return response_text.strip()
+
         return response_text
 
     def answer_question_with_llm(self, question):
